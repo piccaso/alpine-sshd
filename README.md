@@ -1,7 +1,6 @@
 # Alpine SSHD (Dropbear)
 
-[![Docker Repository on Quay](https://quay.io/repository/sjourdan/alpine-sshd/status "Docker Repository on Quay")](https://quay.io/repository/sjourdan/alpine-sshd)
-[![](https://badge.imagelayers.io/sjourdan/alpine-sshd:latest.svg)](https://imagelayers.io/?images=sjourdan/alpine-sshd:latest 'Get your own badge on imagelayers.io')
+[![Docker Repository on Quay](https://quay.io/repository/0xff/alpine-sshd/status "Docker Repository on Quay")](https://quay.io/repository/0xff/alpine-sshd)
 
 This is a small Alpine-based container using [openssh-sftp-server](https://pkgs.alpinelinux.org/package/main/x86/openssh-sftp-server) and [Dropbear SSH](https://matt.ucc.asn.au/dropbear/dropbear.html).
 
@@ -15,7 +14,7 @@ It takes 2 variables: `USER` and `PASSWORD`, both in cleartext. Redirect the TCP
     -p 2222:22 \
     -e USER=myusername \
     -e PASSWORD=mypassword \
-    sjourdan/alpine-sshd
+    0xff/alpine-sshd
 
 Then you can use this container to SFTP and/or SSH:
 
@@ -36,7 +35,6 @@ Options used in this container:
 -R              Create hostkeys as required
 -F              Don't fork into background
 -E              Log to stderr rather than syslog
--m              Don't display the motd on login
 -w              Disallow root logins
 -g              Disable password logins for root
 ```
