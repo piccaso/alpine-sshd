@@ -2,30 +2,33 @@
 
 [![Docker Repository on Quay](https://quay.io/repository/0xff/alpine-sshd/status "Docker Repository on Quay")](https://quay.io/repository/0xff/alpine-sshd)
 
-This is a small Alpine-based container using [openssh-sftp-server](https://pkgs.alpinelinux.org/package/main/x86/openssh-sftp-server) and [Dropbear SSH](https://matt.ucc.asn.au/dropbear/dropbear.html).
+This is a small Alpine-based container containung [Dropbear SSH](https://matt.ucc.asn.au/dropbear/dropbear.html).
 
-The intended usage is to (temporary) access/modify shared volumes by SSH/SFTP.
+## Usecases
+
+- Accessing shared volumes via SSH/SFTP.
+- Accessing a docker network via SSH tunnel.
 
 ## Usage
 
-It takes 2 variables: `USER` and `PASSWORD`, both in cleartext. Redirect the TCP/22 port to whatever port you want.
+- Set `USER` and `PASSWORD` environment variables (in cleartext).
+- Redirect TCP/22 port
 
-    docker run -d \
-    -p 2222:22 \
+example:
+
+    docker run -d --rm \
     -e USER=myusername \
     -e PASSWORD=mypassword \
-    0xff/alpine-sshd
+    -p 2222:22 \
+    quay.io/0xff/alpine-sshd
 
-Then you can use this container to SFTP and/or SSH:
 
-```
-sftp -P2222 user1@192.168.99.100
-user1@192.168.99.100's password:
-Connected to 192.168.99.100.
-sftp> pwd
-Remote working directory: /home/user1
-sftp>
-```
+## Passwordles
+
+To use key based authentication, set the `AUTHORIZED_KEYS` environment variable.  
+In that case you can omit setting `PASSWORD`.
+
+See [docker-compose.yml](docker-compose.yml).
 
 ## Dropbear Notes
 
@@ -38,7 +41,3 @@ Options used in this container:
 -w              Disallow root logins
 -g              Disable password logins for root
 ```
-
-## Build
-
-    $ make build
