@@ -2,7 +2,7 @@
 
 [![Docker Repository on Quay](https://quay.io/repository/0xff/alpine-sshd/status "Docker Repository on Quay")](https://quay.io/repository/0xff/alpine-sshd)
 
-This is a small Alpine-based container containung [Dropbear SSH](https://matt.ucc.asn.au/dropbear/dropbear.html).
+This is a small [Alpine](https://alpinelinux.org/)-based container containung [Dropbear SSH](https://matt.ucc.asn.au/dropbear/dropbear.html).
 
 ## Usecases
 
