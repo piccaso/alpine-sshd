@@ -1,0 +1,13 @@
+version: "2.2"
+services:
+  sshd:
+    build: ./
+    image: quay.io/0xff/alpine-sshd
+    restart: always
+    ports:
+      - "2222:22"
+    environment:
+      USER: "me"
+      AUTHORIZED_KEYS: |
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQ...
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQ...
